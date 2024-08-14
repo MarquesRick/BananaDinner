@@ -9,3 +9,4 @@
 /Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Domain/obj/Debug/net8.0/refint/BananaDinner.Domain.dll
 /Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Domain/obj/Debug/net8.0/BananaDinner.Domain.pdb
 /Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Domain/obj/Debug/net8.0/ref/BananaDinner.Domain.dll
+/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Domain/obj/Debug/net8.0/BananaDinner.Domain.sourcelink.json

@@ -15,3 +15,4 @@
 /Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Infrastructure/obj/Debug/net8.0/refint/BananaDinner.Infrastructure.dll
 /Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Infrastructure/obj/Debug/net8.0/BananaDinner.Infrastructure.pdb
 /Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Infrastructure/obj/Debug/net8.0/ref/BananaDinner.Infrastructure.dll
+/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Infrastructure/obj/Debug/net8.0/BananaDinner.Infrastructure.sourcelink.json
