@@ -1,0 +1,157 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "BananaDinner.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "BananaDinner.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BananaDinner.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BananaDinner.Application.dll": {}
+        }
+      },
+      "BananaDinner.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/BananaDinner.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BananaDinner.Contracts.dll": {}
+        }
+      },
+      "BananaDinner.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/BananaDinner.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BananaDinner.Domain.dll": {}
+        }
+      },
+      "BananaDinner.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "BananaDinner.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BananaDinner.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BananaDinner.Infrastructure.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BananaDinner.Application/1.0.0": {
+      "type": "project",
+      "path": "../BananaDinner.Application/BananaDinner.Application.csproj",
+      "msbuildProject": "../BananaDinner.Application/BananaDinner.Application.csproj"
+    },
+    "BananaDinner.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../BananaDinner.Contracts/BananaDinner.Contracts.csproj",
+      "msbuildProject": "../BananaDinner.Contracts/BananaDinner.Contracts.csproj"
+    },
+    "BananaDinner.Domain/1.0.0": {
+      "type": "project",
+      "path": "../BananaDinner.Domain/BananaDinner.Domain.csproj",
+      "msbuildProject": "../BananaDinner.Domain/BananaDinner.Domain.csproj"
+    },
+    "BananaDinner.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../BananaDinner.Infrastructure/BananaDinner.Infrastructure.csproj",
+      "msbuildProject": "../BananaDinner.Infrastructure/BananaDinner.Infrastructure.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "BananaDinner.Application >= 1.0.0",
+      "BananaDinner.Contracts >= 1.0.0",
+      "BananaDinner.Infrastructure >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/hmarques/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Api/BananaDinner.Api.csproj",
+      "projectName": "BananaDinner.Api",
+      "projectPath": "/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Api/BananaDinner.Api.csproj",
+      "packagesPath": "/Users/hmarques/.nuget/packages/",
+      "outputPath": "/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Api/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/hmarques/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "/usr/local/share/dotnet/library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Application/BananaDinner.Application.csproj": {
+              "projectPath": "/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Application/BananaDinner.Application.csproj"
+            },
+            "/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Contracts/BananaDinner.Contracts.csproj": {
+              "projectPath": "/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Contracts/BananaDinner.Contracts.csproj"
+            },
+            "/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Infrastructure/BananaDinner.Infrastructure.csproj": {
+              "projectPath": "/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Infrastructure/BananaDinner.Infrastructure.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.400/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
