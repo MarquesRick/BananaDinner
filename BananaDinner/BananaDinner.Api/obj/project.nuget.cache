@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "d2pXk0HXJNg=",
+  "dgSpecHash": "h4id0W5SzEQ=",
   "success": true,
   "projectFilePath": "/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Api/BananaDinner.Api.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/hmarques/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.1/microsoft.extensions.dependencyinjection.abstractions.8.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
