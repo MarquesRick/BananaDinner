@@ -34,3 +34,9 @@
 /Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Api/obj/Debug/net8.0/BananaDinner.Api.genruntimeconfig.cache
 /Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Api/obj/Debug/net8.0/ref/BananaDinner.Api.dll
 /Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Api/obj/Debug/net8.0/BananaDinner.Api.sourcelink.json
+/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Api/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Api/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/Users/hmarques/work/Projetos/csharp/BananaDinner_Proj/BananaDinner/BananaDinner.Api/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll

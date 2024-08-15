@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BananaDinner.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e975f7c485d5a9a8449898eae1e337a59f2e55d3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+740b5bc0ca600e0b927eb1b7230858aca71bdef9")]
 [assembly: System.Reflection.AssemblyProductAttribute("BananaDinner.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BananaDinner.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
