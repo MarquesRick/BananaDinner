@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("c160dd36-9f23-49fe-943c-ccbe589aed76")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("BananaDinner.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+740b5bc0ca600e0b927eb1b7230858aca71bdef9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f41182cfe3229185bc97fd69be0b01beb9e8976e")]
 [assembly: System.Reflection.AssemblyProductAttribute("BananaDinner.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BananaDinner.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
