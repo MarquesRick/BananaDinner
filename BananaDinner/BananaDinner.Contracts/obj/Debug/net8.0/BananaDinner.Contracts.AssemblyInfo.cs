@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BananaDinner.Contracts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d2d4cca0be7b0edfabe99bac2157e1963b24ff0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+67c7ece22f6d98846f7ef72db868145ab9007f95")]
 [assembly: System.Reflection.AssemblyProductAttribute("BananaDinner.Contracts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BananaDinner.Contracts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
