@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BananaDinner.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+67c7ece22f6d98846f7ef72db868145ab9007f95")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10e38cc7c94cbab06cdd5abda1c15c3b6ed92e36")]
 [assembly: System.Reflection.AssemblyProductAttribute("BananaDinner.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BananaDinner.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

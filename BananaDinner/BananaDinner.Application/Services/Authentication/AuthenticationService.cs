@@ -1,3 +1,4 @@
+using BananaDinner.Application.Common.Errors;
 using BananaDinner.Application.Common.Interfaces.Authentication;
 using BananaDinner.Application.Common.Interfaces.Persistence;
 using BananaDinner.Domain.Entities;
@@ -20,7 +21,7 @@ public class AuthenticationService : IAuthenticationService
         //1. validate the user doesn't exist
         if (_userRepository.GetUserByEmail(email) is not null)
         {
-            throw new Exception("User with given email already exists.");
+            throw new DuplicateEmailException();
         }
 
         //2. create user (generate unique Id) & persist to db
