@@ -1,4 +1,7 @@
 using BananaDinner.Application.Services.Authentication;
+using BananaDinner.Application.Services.Authentication.Commands;
+using BananaDinner.Application.Services.Authentication.Common;
+using BananaDinner.Application.Services.Authentication.Queries;
 using BananaDinner.Contracts.Authentication;
 using BananaDinner.Domain.Common.Errors;
 using Microsoft.AspNetCore.Mvc;
@@ -8,17 +11,19 @@ namespace BananaDinner.Api.Controllers;
 [Route("auth")]
 public class AuthenticationController : ApiController
 {
-    private readonly IAuthenticationService _authenticationService;
+    private readonly IAuthenticationCommandService _authenticationCommandService;
+    private readonly IAuthenticationQueryService _authenticationQueryService;
 
-    public AuthenticationController(IAuthenticationService authenticationService)
+    public AuthenticationController(IAuthenticationCommandService authenticationCommandService, IAuthenticationQueryService authenticationQueryService)
     {
-        _authenticationService = authenticationService;
+        _authenticationCommandService = authenticationCommandService;
+        _authenticationQueryService = authenticationQueryService;
     }
 
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        var registerResult = _authenticationService.Register(request.FirstName,
+        var registerResult = _authenticationCommandService.Register(request.FirstName,
                                         request.LastName,
                                         request.Email,
                                         request.Password);
@@ -32,7 +37,7 @@ public class AuthenticationController : ApiController
     [HttpPost("login")]
     public IActionResult Login(LoginRequest request)
     {
-        var authResult = _authenticationService.Login(
+        var authResult = _authenticationQueryService.Login(
             request.Email,
             request.Password);
 

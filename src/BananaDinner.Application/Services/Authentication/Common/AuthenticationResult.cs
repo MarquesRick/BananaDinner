@@ -1,6 +1,6 @@
 using BananaDinner.Domain.Entities;
 
-namespace BananaDinner.Application.Services.Authentication;
+namespace BananaDinner.Application.Services.Authentication.Common;
 
 public record AuthenticationResult(
     User User,
