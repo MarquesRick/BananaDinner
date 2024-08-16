@@ -9,3 +9,7 @@
 ## Error handling
 
 [RFC 7807 - Problem Details for HTTP APIs](https://datatracker.ietf.org/doc/html/rfc7807)
+
+## OneOf
+
+[OneOf for discriminated unions in C#](https://github.com/mcintyre321/OneOf)
