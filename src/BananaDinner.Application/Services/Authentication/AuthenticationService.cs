@@ -1,7 +1,9 @@
 using BananaDinner.Application.Common.Errors;
 using BananaDinner.Application.Common.Interfaces.Authentication;
 using BananaDinner.Application.Common.Interfaces.Persistence;
+using BananaDinner.Domain.Common.Errors;
 using BananaDinner.Domain.Entities;
+using ErrorOr;
 using FluentResults;
 
 namespace BananaDinner.Application.Services.Authentication;
@@ -17,12 +19,12 @@ public class AuthenticationService : IAuthenticationService
         _userRepository = userRepository;
     }
 
-    public Result<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
+    public ErrorOr<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
     {
         //1. validate the user doesn't exist
         if (_userRepository.GetUserByEmail(email) is not null)
         {
-            return Result.Fail<AuthenticationResult>(new[] { new DuplicateEmailError() });
+            return Errors.User.DuplicateEmail;
         }
 
         //2. create user (generate unique Id) & persist to db
@@ -40,18 +42,18 @@ public class AuthenticationService : IAuthenticationService
         return new AuthenticationResult(user, token);
     }
 
-    public AuthenticationResult Login(string email, string password)
+    public ErrorOr<AuthenticationResult> Login(string email, string password)
     {
         //1. validate the user exists
         if (_userRepository.GetUserByEmail(email) is not User user)
         {
-            throw new Exception("User with given email does not exist.");
+            return Errors.Authentication.InvalidCredentials;
         }
 
         //2. validate then password is correct
         if (user.Password != password)
         {
-            throw new Exception("Invalid password.");
+            return Errors.Authentication.InvalidCredentials;
         }
 
         //3. create JWT token

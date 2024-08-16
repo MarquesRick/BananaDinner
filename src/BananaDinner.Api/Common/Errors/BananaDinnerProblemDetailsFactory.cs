@@ -1,10 +1,12 @@
 using System.Diagnostics;
+using BananaDinner.Api.Common.Http;
+using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
 
-namespace BananaDinner.Api.Errors;
+namespace BananaDinner.Api.Common.Errors;
 
 public class BananaDinnerProblemDetailsFactory : ProblemDetailsFactory
 {
@@ -79,7 +81,10 @@ public class BananaDinnerProblemDetailsFactory : ProblemDetailsFactory
         {
             problemDetails.Extensions["traceId"] = traceId;
         }
-
-        problemDetails.Extensions.Add("customProperty", "customValue");
+        var errors = httpContext?.Items[HttpContextItemKeys.Errors] as List<Error>;
+        if (errors is not null)
+        {
+            problemDetails.Extensions.Add("errorCodes", errors.Select(error => error.Code));
+        }
     }
 }

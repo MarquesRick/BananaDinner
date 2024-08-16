@@ -1,6 +1,4 @@
-using BananaDinner.Api.Errors;
-using BananaDinner.Api.Filters;
-using BananaDinner.Api.Middleware;
+using BananaDinner.Api.Common.Errors;
 using BananaDinner.Application;
 using BananaDinner.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
