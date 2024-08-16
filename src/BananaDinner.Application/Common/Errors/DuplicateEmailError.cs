@@ -1,9 +1,12 @@
-using System.Net;
+using FluentResults;
 
 namespace BananaDinner.Application.Common.Errors;
 
-public record struct DuplicateEmailError() : IError
+public class DuplicateEmailError() : IError
 {
-    public HttpStatusCode StatusCode { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public string ErrorMessage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public List<IError> Reasons => throw new NotImplementedException();
+
+    public string Message => throw new NotImplementedException();
+
+    public Dictionary<string, object> Metadata => throw new NotImplementedException();
 }

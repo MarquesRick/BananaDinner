@@ -2,7 +2,7 @@ using BananaDinner.Application.Common.Errors;
 using BananaDinner.Application.Common.Interfaces.Authentication;
 using BananaDinner.Application.Common.Interfaces.Persistence;
 using BananaDinner.Domain.Entities;
-using OneOf;
+using FluentResults;
 
 namespace BananaDinner.Application.Services.Authentication;
 
@@ -17,12 +17,12 @@ public class AuthenticationService : IAuthenticationService
         _userRepository = userRepository;
     }
 
-    public OneOf<AuthenticationResult, IError> Register(string firstName, string lastName, string email, string password)
+    public Result<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
     {
         //1. validate the user doesn't exist
         if (_userRepository.GetUserByEmail(email) is not null)
         {
-            return new DuplicateEmailError();
+            return Result.Fail<AuthenticationResult>(new[] { new DuplicateEmailError() });
         }
 
         //2. create user (generate unique Id) & persist to db
