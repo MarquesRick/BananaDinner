@@ -4,19 +4,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BananaDinner.Api.Controllers;
 
+[Route("/")]
 public class ErrorController : ControllerBase
 {
 
-    [Route("/error")]
+    [Route("error")]
     public IActionResult Error()
     {
         var exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
         var (statusCode, message) = exception switch
         {
-            DuplicateEmailException => (StatusCodes.Status409Conflict, "Email already exists."),
+            IServiceException serviceException => ((int)serviceException.StatusCode, serviceException.ErrorMessage),
             _ => (StatusCodes.Status500InternalServerError, "An unexpected error occurred.")
         };
-
 
         return Problem(statusCode: statusCode, title: message);
     }
