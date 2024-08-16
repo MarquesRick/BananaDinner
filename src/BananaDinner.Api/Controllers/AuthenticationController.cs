@@ -1,4 +1,3 @@
-using BananaDinner.Api.Filters;
 using BananaDinner.Application.Services.Authentication;
 using BananaDinner.Contracts.Authentication;
 using Microsoft.AspNetCore.Mvc;
@@ -24,10 +23,12 @@ public class AuthenticationController : ControllerBase
                                         request.Email,
                                         request.Password);
 
-        return registerResult.Match(
-            result => Ok(MapAuthResult(result)),
-            error => Problem(statusCode: (int)error.StatusCode, title: error.ErrorMessage)
-        );
+        if (registerResult.IsSuccess)
+        {
+            return Ok(MapAuthResult(registerResult.Value));
+        }
+
+        return Problem(statusCode: 500, title: "An error occurred.");
     }
 
     private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult)

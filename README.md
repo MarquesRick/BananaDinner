@@ -13,3 +13,7 @@
 ## OneOf
 
 [OneOf for discriminated unions in C#](https://github.com/mcintyre321/OneOf)
+
+## FluentResults
+
+[]()
