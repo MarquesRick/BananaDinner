@@ -19,18 +19,25 @@ public class AuthenticationController : ControllerBase
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        var authResult = _authenticationService.Register(request.FirstName,
+        var registerResult = _authenticationService.Register(request.FirstName,
                                         request.LastName,
                                         request.Email,
                                         request.Password);
 
-        var response = new AuthenticationResponse(
-            authResult.User.Id,
-            authResult.User.FirstName,
-            authResult.User.LastName,
-            authResult.User.Email,
-            authResult.Token);
-        return Ok(response);
+        return registerResult.Match(
+            result => Ok(MapAuthResult(result)),
+            error => Problem(statusCode: (int)error.StatusCode, title: error.ErrorMessage)
+        );
+    }
+
+    private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult)
+    {
+        return new AuthenticationResponse(
+                    authResult.User.Id,
+                    authResult.User.FirstName,
+                    authResult.User.LastName,
+                    authResult.User.Email,
+                    authResult.Token);
     }
 
     [HttpPost("login")]
