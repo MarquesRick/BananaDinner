@@ -1,3 +1,9 @@
+using System.Reflection;
+using BananaDinner.Application.Authentication.Commands.Register;
+using BananaDinner.Application.Authentication.Common;
+using BananaDinner.Application.Common.Behaviors;
+using ErrorOr;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,6 +15,12 @@ public static class DependencyInjection
     {
 
         services.AddMediatR(typeof(DependencyInjection).Assembly);
+
+        services.AddScoped(
+            typeof(IPipelineBehavior<,>),
+            typeof(ValidationBehavior<,>));
+
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         return services;
     }
 }

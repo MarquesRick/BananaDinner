@@ -16,8 +16,12 @@
 
 ## FluentResults
 
-[]()
+[FluentResults is a lightweight .NET library developed to solve a common problem.](https://github.com/altmann/FluentResults)
 
 ## Mapster
 
 [Mapster - The Mapper of Your Domain](https://github.com/MapsterMapper/Mapster)
+
+## FluentValidation
+
+[A validation library for .NET that uses a fluent interface and lambda expressions for building strongly-typed validation rules.](https://github.com/FluentValidation/FluentValidation)
