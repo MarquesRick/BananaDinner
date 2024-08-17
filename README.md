@@ -17,3 +17,7 @@
 ## FluentResults
 
 []()
+
+## Mapster
+
+[Mapster - The Mapper of Your Domain](https://github.com/MapsterMapper/Mapster)
