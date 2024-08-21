@@ -366,6 +366,8 @@ dotnet_naming_style.s_camelcase.capitalization = camel_case
 dotnet_diagnostic.CA1852.severity = warning
 dotnet_diagnostic.SA1518.severity = none
 dotnet_diagnostic.SA1516.severity = none
+dotnet_diagnostic.SA1633.severity = none
+dotnet_diagnostic.SA1600.severity = none
 
 # Type 'Program' can be sealed
 dotnet_diagnostic.CA1852.severity = none
