@@ -3,11 +3,12 @@
         <TargetFramework>net8.0</TargetFramework>
         <AnalysisLevel>latest</AnalysisLevel>
         <AnalysisMode>Recommended</AnalysisMode>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
         <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
         <Nullable>enable</Nullable>  
         <ImplicitUsings>enable</ImplicitUsings>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" />

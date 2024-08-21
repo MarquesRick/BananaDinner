@@ -1,11 +1,11 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.IdentityModel.Tokens;
 using BananaDinner.Application.Common.Interfaces.Authentication;
 using BananaDinner.Application.Common.Interfaces.Services;
-using Microsoft.Extensions.Options;
 using BananaDinner.Domain.Entities;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BananaDinner.Infrastructure.Authentication;
 
@@ -27,11 +27,12 @@ public class JwtTokenGenerator : IJwtTokenGenerator
                 Encoding.UTF8.GetBytes(_jwtSettings.Secret)),
             SecurityAlgorithms.HmacSha256);
 
-        var claims = new[] {
+        var claims = new[]
+        {
             new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName),
-            new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName)
+            new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName),
         };
 
         var securityToken = new JwtSecurityToken(

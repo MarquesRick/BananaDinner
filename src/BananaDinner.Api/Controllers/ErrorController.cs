@@ -7,7 +7,6 @@ namespace BananaDinner.Api.Controllers;
 [Route("/")]
 public class ErrorController : ControllerBase
 {
-
     [Route("error")]
     public IActionResult Error()
     {
@@ -17,7 +16,6 @@ public class ErrorController : ControllerBase
         //     IServiceException serviceException => ((int)serviceException.StatusCode, serviceException.ErrorMessage),
         //     _ => (StatusCodes.Status500InternalServerError, "An unexpected error occurred.")
         // };
-
         return Problem(statusCode: 500, title: "Teste");
     }
 }

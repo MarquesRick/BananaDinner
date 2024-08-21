@@ -2,9 +2,9 @@ using BananaDinner.Domain.Common.Models;
 
 namespace BananaDinner.Domain.BillAggregate.ValueObjects;
 
-public sealed class BillId : AggregateRoot<Guid>
+public sealed class BillId : ValueObject
 {
-    public override Guid Value { get; protected set; }
+    public Guid Value { get; }
 
     private BillId(Guid value)
     {
@@ -14,11 +14,6 @@ public sealed class BillId : AggregateRoot<Guid>
     public static BillId CreateUnique()
     {
         return new(Guid.NewGuid());
-    }
-
-    public static BillId Create(Guid value)
-    {
-        return new(value);
     }
 
     public override IEnumerable<object> GetEqualityComponents()

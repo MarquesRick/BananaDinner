@@ -27,7 +27,7 @@ public class BananaDinnerProblemDetailsFactory : ProblemDetailsFactory
             Title = title,
             Type = type,
             Detail = detail,
-            Instance = instance
+            Instance = instance,
         };
 
         ApplyProblemDetailsDefaults(httpContext, problemDetails, statusCode.Value);
@@ -81,6 +81,7 @@ public class BananaDinnerProblemDetailsFactory : ProblemDetailsFactory
         {
             problemDetails.Extensions["traceId"] = traceId;
         }
+
         var errors = httpContext?.Items[HttpContextItemKeys.Errors] as List<Error>;
         if (errors is not null)
         {

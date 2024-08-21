@@ -26,14 +26,12 @@ public class AuthenticationController : ApiController
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterRequest request)
     {
-
         var command = _mapper.Map<RegisterCommand>(request);
         var registerResult = await _mediator.Send(command);
 
         return registerResult.Match(
             registerResult => Ok(_mapper.Map<AuthenticationResult>(registerResult)),
-            errors => Problem(errors)
-        );
+            errors => Problem(errors));
     }
 
     [HttpPost("login")]
@@ -49,9 +47,9 @@ public class AuthenticationController : ApiController
                 statusCode: StatusCodes.Status401Unauthorized,
                 title: authResult.FirstError.Description);
         }
+
         return authResult.Match(
             authResult => Ok(_mapper.Map<AuthenticationResult>(authResult)),
-            errors => Problem(errors)
-        );
+            errors => Problem(errors));
     }
 }

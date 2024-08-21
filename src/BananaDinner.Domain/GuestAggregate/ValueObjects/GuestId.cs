@@ -1,16 +1,17 @@
 using BananaDinner.Domain.Common.Models;
 
-namespace BananaDinner.Domain.DinnerAggregate.ValueObjects;
-public sealed class DinnerId : ValueObject
+namespace BananaDinner.Domain.GuestAggregate.ValueObjects;
+
+public sealed class GuestId : ValueObject
 {
     public Guid Value { get; }
 
-    private DinnerId(Guid value)
+    private GuestId(Guid value)
     {
         Value = value;
     }
 
-    public static DinnerId CreateUnique()
+    public static GuestId CreateUnique()
     {
         return new(Guid.NewGuid());
     }

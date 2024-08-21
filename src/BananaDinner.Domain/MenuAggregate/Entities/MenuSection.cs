@@ -1,5 +1,5 @@
-using BananaDinner.Domain.MenuAggregate.ValueObjects;
 using BananaDinner.Domain.Common.Models;
+using BananaDinner.Domain.MenuAggregate.ValueObjects;
 
 namespace BananaDinner.Domain.MenuAggregate.Entities;
 public sealed class MenuSection : Entity<MenuSectionId>

@@ -362,15 +362,33 @@ dotnet_naming_style.s_camelcase.required_suffix =
 dotnet_naming_style.s_camelcase.word_separator = 
 dotnet_naming_style.s_camelcase.capitalization = camel_case
 
-# Seal internal types
-dotnet_diagnostic.CA1852.severity = warning
+# Seal internal types - SA
 dotnet_diagnostic.SA1518.severity = none
 dotnet_diagnostic.SA1516.severity = none
 dotnet_diagnostic.SA1633.severity = none
 dotnet_diagnostic.SA1600.severity = none
-
-# Type 'Program' can be sealed
+dotnet_diagnostic.SA1101.severity = none
+dotnet_diagnostic.SA1201.severity = none
+dotnet_diagnostic.SA1000.severity = none
+dotnet_diagnostic.SA1200.severity = none
+dotnet_diagnostic.SA1309.severity = none
+dotnet_diagnostic.SA1010.severity = none
+dotnet_diagnostic.SA1313.severity = none
+dotnet_diagnostic.SA1024.severity = none
+dotnet_diagnostic.SA1009.severity = none
+dotnet_diagnostic.SA1503.severity = none
+# Type 'Program' can be sealed - CA
 dotnet_diagnostic.CA1852.severity = none
+dotnet_diagnostic.CA1725.severity = none
+dotnet_diagnostic.CA1805.severity = none
+dotnet_diagnostic.CA1852.severity = warning
+dotnet_diagnostic.CA1859.severity = warning
+# CS
+dotnet_diagnostic.CS1573.severity = none
+dotnet_diagnostic.CS1712.severity = none
+dotnet_diagnostic.CS1591.severity = none
+dotnet_diagnostic.CS8625.severity = none
+
 
 # Non-nullable property must contain a non-null value when exiting constructor.
 dotnet_diagnostic.CS8618.severity = none
