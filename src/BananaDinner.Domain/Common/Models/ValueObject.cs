@@ -1,4 +1,4 @@
-namespace BananaDinner.Domain.Models;
+namespace BananaDinner.Domain.Common.Models;
 
 public abstract class ValueObject : IEquatable<ValueObject>
 {
