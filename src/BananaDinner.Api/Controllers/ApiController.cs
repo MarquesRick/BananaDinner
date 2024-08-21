@@ -23,7 +23,9 @@ public class ApiController : ControllerBase
         return Problem(errors[0]);
     }
 
+#pragma warning disable CA1859 // Use concrete types when possible for improved performance
     private IActionResult Problem(Error error)
+#pragma warning restore CA1859 // Use concrete types when possible for improved performance
     {
         var statusCode = error.Type switch
         {
