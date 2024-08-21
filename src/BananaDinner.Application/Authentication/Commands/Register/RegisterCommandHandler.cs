@@ -2,7 +2,7 @@ using BananaDinner.Application.Authentication.Common;
 using BananaDinner.Application.Common.Interfaces.Authentication;
 using BananaDinner.Application.Common.Interfaces.Persistence;
 using BananaDinner.Domain.Common.Errors;
-using BananaDinner.Domain.Entities;
+using BananaDinner.Domain.UserAggregate;
 using ErrorOr;
 using MediatR;
 
@@ -31,13 +31,11 @@ public class RegisterCommandHandler :
         }
 
         // 2. create user (generate unique Id) & persist to db
-        var user = new User
-        {
-            FirstName = command.FirstName,
-            LastName = command.LastName,
-            Email = command.Email,
-            Password = command.Password,
-        };
+        var user = User.Create(
+            command.FirstName,
+            command.LastName,
+            command.Email,
+            command.Password);
 
         _userRepository.Add(user);
 

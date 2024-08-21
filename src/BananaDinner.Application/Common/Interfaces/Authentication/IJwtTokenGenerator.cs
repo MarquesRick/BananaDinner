@@ -1,4 +1,4 @@
-using BananaDinner.Domain.Entities;
+using BananaDinner.Domain.UserAggregate;
 
 namespace BananaDinner.Application.Common.Interfaces.Authentication;
 

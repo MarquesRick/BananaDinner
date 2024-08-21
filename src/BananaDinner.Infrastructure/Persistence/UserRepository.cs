@@ -1,5 +1,5 @@
 using BananaDinner.Application.Common.Interfaces.Persistence;
-using BananaDinner.Domain.Entities;
+using BananaDinner.Domain.UserAggregate;
 
 namespace BananaDinner.Infrastructure.Persistence;
 

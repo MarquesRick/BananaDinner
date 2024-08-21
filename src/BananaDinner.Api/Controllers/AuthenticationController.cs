@@ -1,3 +1,4 @@
+using BananaDinner.Api.Common;
 using BananaDinner.Application.Authentication.Commands.Register;
 using BananaDinner.Application.Authentication.Common;
 using BananaDinner.Application.Authentication.Queries.Login;
@@ -10,8 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BananaDinner.Api.Controllers;
 
-[Route("auth")]
 [AllowAnonymous]
+[Route(Routes.Auth.Base)]
 public class AuthenticationController : ApiController
 {
     private readonly ISender _mediator;
@@ -23,7 +24,7 @@ public class AuthenticationController : ApiController
         _mapper = mapper;
     }
 
-    [HttpPost("register")]
+    [HttpPost(Routes.Auth.Register)]
     public async Task<IActionResult> Register(RegisterRequest request)
     {
         var command = _mapper.Map<RegisterCommand>(request);
@@ -34,7 +35,7 @@ public class AuthenticationController : ApiController
             errors => Problem(errors));
     }
 
-    [HttpPost("login")]
+    [HttpPost(Routes.Auth.Login)]
     public async Task<IActionResult> Login(LoginRequest request)
     {
         var query = _mapper.Map<LoginQuery>(request);

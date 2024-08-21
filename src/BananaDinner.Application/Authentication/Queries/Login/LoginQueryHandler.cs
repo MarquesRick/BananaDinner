@@ -2,7 +2,7 @@ using BananaDinner.Application.Authentication.Common;
 using BananaDinner.Application.Common.Interfaces.Authentication;
 using BananaDinner.Application.Common.Interfaces.Persistence;
 using BananaDinner.Domain.Common.Errors;
-using BananaDinner.Domain.Entities;
+using BananaDinner.Domain.UserAggregate;
 using ErrorOr;
 using MediatR;
 

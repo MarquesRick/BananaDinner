@@ -10,12 +10,6 @@ public class ErrorController : ControllerBase
     [Route("error")]
     public IActionResult Error()
     {
-        // var exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
-        // var (statusCode, message) = exception switch
-        // {
-        //     IServiceException serviceException => ((int)serviceException.StatusCode, serviceException.ErrorMessage),
-        //     _ => (StatusCodes.Status500InternalServerError, "An unexpected error occurred.")
-        // };
-        return Problem(statusCode: 500, title: "Teste");
+        return Problem(statusCode: 500, title: "An unexpected error occurred");
     }
 }

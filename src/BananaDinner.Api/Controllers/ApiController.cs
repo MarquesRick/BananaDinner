@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace BananaDinner.Api.Controllers;
 
-[ApiController]
 [Authorize]
+[ApiController]
 public class ApiController : ControllerBase
 {
     protected IActionResult Problem(List<Error> errors)
@@ -23,9 +23,7 @@ public class ApiController : ControllerBase
         return Problem(errors[0]);
     }
 
-#pragma warning disable CA1859 // Use concrete types when possible for improved performance
-    private IActionResult Problem(Error error)
-#pragma warning restore CA1859 // Use concrete types when possible for improved performance
+    private static ObjectResult Problem(Error error)
     {
         var statusCode = error.Type switch
         {
@@ -35,7 +33,12 @@ public class ApiController : ControllerBase
             _ => StatusCodes.Status500InternalServerError,
         };
 
-        return Problem(statusCode: statusCode, title: error.Description);
+        var result = new ObjectResult(new { title = error.Description })
+        {
+            StatusCode = statusCode,
+        };
+
+        return result;
     }
 
     private ActionResult ValidationProblem(List<Error> errors)
