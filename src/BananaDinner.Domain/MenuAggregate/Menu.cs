@@ -6,7 +6,7 @@ using BananaDinner.Domain.MenuAggregate.Entities;
 using BananaDinner.Domain.MenuAggregate.ValueObjects;
 using BananaDinner.Domain.MenuReviewAggregate.ValueObjects;
 
-namespace BananaDinner.Domain.Menu;
+namespace BananaDinner.Domain.MenuAggregate;
 
 public sealed class Menu : AggregateRoot<MenuId>
 {
@@ -29,6 +29,7 @@ public sealed class Menu : AggregateRoot<MenuId>
         string description,
         AverageRating averageRating,
         HostId hostId,
+        List<MenuSection> sections,
         DateTime createdDateTime,
         DateTime updatedDateTime)
         : base(menuId)
@@ -37,6 +38,7 @@ public sealed class Menu : AggregateRoot<MenuId>
         Description = description;
         AverageRating = averageRating;
         HostId = hostId;
+        _sections = sections;
         CreatedDateTime = createdDateTime;
         UpdatedDateTime = updatedDateTime;
     }
@@ -44,15 +46,16 @@ public sealed class Menu : AggregateRoot<MenuId>
     public static Menu Create(
         string name,
         string description,
-        AverageRating averageRating,
-        HostId hostId)
+        HostId hostId,
+        List<MenuSection> sections)
     {
         return new(
             MenuId.CreateUnique(),
             name,
             description,
-            averageRating,
+            AverageRating.CreateNew(0),
             hostId,
+            sections ?? [],
             DateTime.UtcNow,
             DateTime.UtcNow);
     }
