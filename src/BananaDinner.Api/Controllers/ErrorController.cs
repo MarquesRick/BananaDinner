@@ -1,5 +1,3 @@
-using BananaDinner.Application.Common.Errors;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BananaDinner.Api.Controllers;
