@@ -25,3 +25,8 @@
 ## FluentValidation
 
 [A validation library for .NET that uses a fluent interface and lambda expressions for building strongly-typed validation rules.](https://github.com/FluentValidation/FluentValidation)
+
+ConnectionString: "Host=localhost;Port=6500;Username=admin;Password=password123;Database=banana_dinner_admin;SSL Mode=Require;Trust Server Certificate=true;"
+
+dotnet ef database update -p BananaDinner.Infrastructure -s BananaDinner.Api --connection "Host=localhost;Port=6500;Username=admin;Password=pas
+sword123;Database=banana_dinner_admin;"

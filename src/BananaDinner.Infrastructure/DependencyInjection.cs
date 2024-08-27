@@ -31,7 +31,7 @@ public static class DependencyInjection
     public static IServiceCollection AddPersistance(this IServiceCollection services)
     {
         services.AddDbContext<BananaDinnerDbContext>(options =>
-          options.UseSqlServer());
+          options.UseNpgsql());
 
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IMenuRepository, MenuRepository>();
