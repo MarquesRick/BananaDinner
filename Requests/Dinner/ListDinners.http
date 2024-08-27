@@ -1,3 +1,7 @@
 @host=http://localhost:5021
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJCYW5hbmFEaW5uZXIuRG9tYWluLlVzZXJBZ2dyZWdhdGUuVmFsdWVPYmplY3RzLlVzZXJJZCIsImp0aSI6ImNkZWFkZjdhLWVjZjItNDRiNS05NWZmLTc3YWZkYTA3ZGJmMSIsImdpdmVuX25hbWUiOiJIZW5yaXF1ZSIsImZhbWlseV9uYW1lIjoiTWFycXVlcyIsImV4cCI6MTcyNDcxMjkyNSwiaXNzIjoiQmFuYW5hRGlubmVyIiwiYXVkIjoiQmFuYW5hRGlubmVyIn0.aCaKFldFY-QbsEzNKyT1r_AQyL3PTDZXiE5RS-J8ehQ
 
 GET {{host}}/dinner
+Authorization: Bearer {{token}}
+
+

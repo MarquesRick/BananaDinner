@@ -19,4 +19,8 @@ public sealed class DinnerId : ValueObject
     {
         yield return Value;
     }
+
+    private DinnerId()
+    {
+    }
 }

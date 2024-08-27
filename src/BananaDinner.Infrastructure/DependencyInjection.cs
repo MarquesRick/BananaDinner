@@ -4,8 +4,10 @@ using BananaDinner.Application.Common.Interfaces.Persistence;
 using BananaDinner.Application.Common.Interfaces.Services;
 using BananaDinner.Infrastructure.Authentication;
 using BananaDinner.Infrastructure.Persistence;
+using BananaDinner.Infrastructure.Persistence.Repositories;
 using BananaDinner.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -28,6 +30,9 @@ public static class DependencyInjection
 
     public static IServiceCollection AddPersistance(this IServiceCollection services)
     {
+        services.AddDbContext<BananaDinnerDbContext>(options =>
+          options.UseSqlServer());
+
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IMenuRepository, MenuRepository>();
         return services;

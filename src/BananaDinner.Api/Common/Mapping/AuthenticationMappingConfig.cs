@@ -2,6 +2,7 @@ using BananaDinner.Application.Authentication.Commands.Register;
 using BananaDinner.Application.Authentication.Common;
 using BananaDinner.Application.Authentication.Queries.Login;
 using BananaDinner.Contracts.Authentication;
+using BananaDinner.Domain.UserAggregate;
 using Mapster;
 
 namespace BananaDinner.Api.Common.Mapping;
@@ -10,7 +11,6 @@ public class AuthenticationMappingConfig : IRegister
 {
     public void Register(TypeAdapterConfig config)
     {
-        // _ = config ?? throw new ArgumentNullException(nameof(config));
         config.NewConfig<RegisterRequest, RegisterCommand>();
         config.NewConfig<LoginRequest, LoginQuery>();
 
