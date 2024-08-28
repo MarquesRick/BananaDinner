@@ -1,5 +1,5 @@
 @host=http://localhost:5021
-@token=teste
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJCYW5hbmFEaW5uZXIuRG9tYWluLlVzZXJBZ2dyZWdhdGUuVmFsdWVPYmplY3RzLlVzZXJJZCIsImp0aSI6ImNjOTgyYTQ2LTE0OGUtNDcyZC1hY2I2LWFiZDUwYzgyNWRiZCIsImdpdmVuX25hbWUiOiJIZW5yaXF1ZSIsImZhbWlseV9uYW1lIjoiTWFycXVlcyIsImV4cCI6MTcyNDcyNTIyMSwiaXNzIjoiQmFuYW5hRGlubmVyIiwiYXVkIjoiQmFuYW5hRGlubmVyIn0.4k4-4ZsyoJjHepmutOXNFXOPF_wAt8cCeUKzA2K0Djw
 @hostId=teste
 POST {{host}}/hosts/{{hostId}}/menus
 Content-Type: application/json
