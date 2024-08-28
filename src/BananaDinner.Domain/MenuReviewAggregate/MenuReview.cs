@@ -8,7 +8,7 @@ using BananaDinner.Domain.MenuReviewAggregate.ValueObjects;
 
 namespace BananaDinner.Domain.MenuReviewAggregate;
 
-public sealed class MenuReview : AggregateRoot<MenuReviewId>
+public sealed class MenuReview : AggregateRoot<MenuReviewId, Guid>
 {
     public Rating Rating { get; }
     public string Comment { get; }

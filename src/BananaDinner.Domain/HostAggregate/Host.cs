@@ -7,7 +7,7 @@ using BananaDinner.Domain.UserAggregate.ValueObjects;
 
 namespace BananaDinner.Domain.HostAggregate;
 
-public sealed class Host : AggregateRoot<HostId>
+public sealed class Host : AggregateRoot<HostId, Guid>
 {
     private readonly List<MenuId> _menuIds = new();
     private readonly List<DinnerId> _dinnerIds = new();

@@ -6,7 +6,7 @@ using BananaDinner.Domain.HostAggregate.ValueObjects;
 
 namespace BananaDinner.Domain.BillAggregate;
 
-public sealed class Bill : AggregateRoot<BillId>
+public sealed class Bill : AggregateRoot<BillId, Guid>
 {
     public DinnerId DinnerId { get; }
     public GuestId GuestId { get; }

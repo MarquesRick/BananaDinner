@@ -8,7 +8,7 @@ using BananaDinner.Domain.MenuReviewAggregate.ValueObjects;
 
 namespace BananaDinner.Domain.MenuAggregate;
 
-public sealed class Menu : AggregateRoot<MenuId>
+public sealed class Menu : AggregateRoot<MenuId, Guid>
 {
     private readonly List<MenuSection> _sections = [];
     private readonly List<DinnerId> _dinnerIds = [];

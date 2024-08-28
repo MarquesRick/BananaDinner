@@ -1,4 +1,3 @@
-using System.Security.Cryptography.X509Certificates;
 using BananaDinner.Domain.HostAggregate.ValueObjects;
 using BananaDinner.Domain.MenuAggregate;
 using BananaDinner.Domain.MenuAggregate.Entities;
@@ -8,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BananaDinner.Infrastructure.Persistence.Configurations;
 
-public class MenuConfigurations : IEntityTypeConfiguration<Menu>
+public sealed class MenuConfigurations : IEntityTypeConfiguration<Menu>
 {
     public void Configure(EntityTypeBuilder<Menu> builder)
     {
@@ -18,27 +17,106 @@ public class MenuConfigurations : IEntityTypeConfiguration<Menu>
         ConfigureMenuReviewIdsTable(builder);
     }
 
-    private static void ConfigureMenuReviewIdsTable(EntityTypeBuilder<Menu> builder)
+    private static void ConfigureMenusTable(EntityTypeBuilder<Menu> builder)
     {
-        builder.OwnsMany(m => m.MenuReviewIds, reviewBuilder =>
-        {
-            reviewBuilder.ToTable("MenuReviewIds");
+        builder.ToTable("Menus");
 
-            reviewBuilder
+        builder.HasKey(m => m.Id);
+
+        builder
+            .Property(m => m.Id)
+            .ValueGeneratedNever()
+            .HasConversion(
+                id => id.Value,
+                value => MenuId.Create(value));
+
+        builder
+            .Property(m => m.Name)
+            .HasMaxLength(100);
+
+        builder
+            .Property(m => m.Description)
+            .HasMaxLength(100);
+
+        builder.OwnsOne(m => m.AverageRating);
+
+        builder
+            .Property(m => m.HostId)
+            .HasConversion(
+                id => id.Value,
+                value => HostId.Create(value));
+    }
+
+    private static void ConfigureMenuSectionsTable(EntityTypeBuilder<Menu> builder)
+    {
+        builder.OwnsMany(m => m.Sections, sectionBuilder =>
+        {
+            sectionBuilder.ToTable("MenuSections");
+
+            sectionBuilder
                 .WithOwner()
                 .HasForeignKey("MenuId");
 
-            reviewBuilder.HasKey("Id");
+            sectionBuilder.HasKey("Id", "MenuId");
 
-            reviewBuilder
-                .Property(r => r.Value)
-                .HasColumnName("ReviewId")
-                .ValueGeneratedNever();
+            sectionBuilder.Property(s => s.Id)
+                .HasColumnName("MenuSectionId")
+                .ValueGeneratedNever()
+                .HasConversion(
+                    id => id.Value,
+                    value => MenuSectionId.Create(value));
+
+            sectionBuilder
+                .Property(s => s.Name)
+                .HasMaxLength(100);
+
+            sectionBuilder
+                .Property(s => s.Description)
+                .HasMaxLength(100);
+
+            sectionBuilder.OwnsMany(
+                s => s.Items,
+                itemBuilder => ConfigureMenuItemsTable(itemBuilder));
+
+            sectionBuilder
+                .Navigation(s => s.Items).Metadata
+                .SetField("_items");
+
+            sectionBuilder
+                .Navigation(s => s.Items)
+                .UsePropertyAccessMode(PropertyAccessMode.Field);
         });
 
         builder.Metadata
-            .FindNavigation(nameof(Menu.MenuReviewIds))!
+            .FindNavigation(nameof(Menu.Sections))!
             .SetPropertyAccessMode(PropertyAccessMode.Field);
+    }
+
+    private static void ConfigureMenuItemsTable(OwnedNavigationBuilder<MenuSection, MenuItem> itemBuilder)
+    {
+        itemBuilder.ToTable("MenuItems");
+
+        itemBuilder
+            .WithOwner()
+            .HasForeignKey("MenuSectionId", "MenuId");
+
+        itemBuilder.HasKey(nameof(MenuItem.Id), "MenuSectionId", "MenuId");
+
+        itemBuilder
+            .Property(i => i.Id)
+            .HasColumnName("MenuItemId")
+            .ValueGeneratedOnAdd()
+            .HasConversion(
+                id => id.Value,
+                value => MenuItemId.Create(value));
+
+        itemBuilder
+            .Property(i => i.Name)
+            .HasMaxLength(100);
+
+        itemBuilder
+            .Property(i => i.Description)
+            .HasMaxLength(100);
     }
 
     private static void ConfigureMenuDinnerIdsTable(EntityTypeBuilder<Menu> builder)
@@ -64,78 +142,26 @@ public class MenuConfigurations : IEntityTypeConfiguration<Menu>
             .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 
-    private static void ConfigureMenuSectionsTable(EntityTypeBuilder<Menu> builder)
+    private static void ConfigureMenuReviewIdsTable(EntityTypeBuilder<Menu> builder)
     {
-        builder.OwnsMany(x => x.Sections, sb =>
+        builder.OwnsMany(m => m.MenuReviewIds, reviewBuilder =>
         {
-            sb.ToTable("MenuSections");
-            sb.WithOwner().HasForeignKey("MenuId");
+            reviewBuilder.ToTable("MenuReviewIds");
 
-            sb.HasKey("Id", "MenuId");
+            reviewBuilder
+                .WithOwner()
+                .HasForeignKey("MenuId");
 
-            sb.Property(x => x.Id)
-                .HasColumnName("MenuSectionId")
-                .ValueGeneratedNever()
-                .HasConversion(
-                    id => id.Value,
-                    value => MenuSectionId.Create(value));
+            reviewBuilder.HasKey("Id");
 
-            sb.Property(x => x.Name).HasMaxLength(100);
-            sb.Property(x => x.Description).HasMaxLength(150);
-
-            sb.OwnsMany(x => x.Items, ib =>
-            {
-                ib.ToTable("MenuItems");
-                ib.WithOwner().HasForeignKey("MenuSectionId", "MenuId");
-
-                ib.HasKey(nameof(MenuItem.Id), "MenuSectionId", "MenuId");
-
-                ib.Property(x => x.Id)
-                    .HasColumnName("MenuItemId")
-                    .ValueGeneratedNever()
-                    .HasConversion(
-                        id => id.Value,
-                        value => MenuItemId.Create(value));
-
-                ib.Property(x => x.Name).HasMaxLength(100);
-                ib.Property(x => x.Description).HasMaxLength(150);
-            });
-
-            sb
-                .Navigation(s => s.Items).Metadata
-                .SetField("_items");
-
-            sb
-                .Navigation(s => s.Items)
-                .UsePropertyAccessMode(PropertyAccessMode.Field);
+            reviewBuilder
+                .Property(r => r.Value)
+                .HasColumnName("ReviewId")
+                .ValueGeneratedNever();
         });
 
-        builder.Metadata.FindNavigation(nameof(Menu.Sections))!
+        builder.Metadata
+            .FindNavigation(nameof(Menu.MenuReviewIds))!
             .SetPropertyAccessMode(PropertyAccessMode.Field);
-    }
-
-    private static void ConfigureMenusTable(EntityTypeBuilder<Menu> builder)
-    {
-        builder.ToTable("Menus");
-        builder.HasKey(x => x.Id);
-
-        builder.Property(x => x.Id)
-            .ValueGeneratedNever()
-            .HasConversion(
-                id => id.Value,
-                value => MenuId.Create(value));
-
-        builder.Property(x => x.Name)
-            .HasMaxLength(100);
-
-        builder.Property(x => x.Description)
-            .HasMaxLength(150);
-
-        builder.OwnsOne(x => x.AverageRating);
-
-        builder.Property(x => x.HostId)
-            .HasConversion(
-                    id => id.Value,
-                    value => HostId.Create(value));
     }
 }

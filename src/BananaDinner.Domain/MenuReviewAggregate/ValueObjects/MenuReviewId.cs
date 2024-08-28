@@ -1,9 +1,9 @@
 using BananaDinner.Domain.Common.Models;
 
 namespace BananaDinner.Domain.MenuReviewAggregate.ValueObjects;
-public sealed class MenuReviewId : ValueObject
+public sealed class MenuReviewId : AggregateRootId<Guid>
 {
-    public Guid Value { get; }
+    public override Guid Value { get; protected set; }
 
     private MenuReviewId(Guid value)
     {
@@ -13,6 +13,11 @@ public sealed class MenuReviewId : ValueObject
     public static MenuReviewId CreateUnique()
     {
         return new(Guid.NewGuid());
+    }
+
+    public static MenuReviewId Create(Guid value)
+    {
+        return new MenuReviewId(value);
     }
 
     public override IEnumerable<object> GetEqualityComponents()

@@ -1,9 +1,9 @@
 using BananaDinner.Domain.Common.Models;
 
 namespace BananaDinner.Domain.DinnerAggregate.ValueObjects;
-public sealed class DinnerId : ValueObject
+public sealed class DinnerId : AggregateRootId<Guid>
 {
-    public Guid Value { get; }
+    public override Guid Value { get; protected set; }
 
     private DinnerId(Guid value)
     {
@@ -13,6 +13,11 @@ public sealed class DinnerId : ValueObject
     public static DinnerId CreateUnique()
     {
         return new(Guid.NewGuid());
+    }
+
+    public static DinnerId Create(Guid value)
+    {
+        return new DinnerId(value);
     }
 
     public override IEnumerable<object> GetEqualityComponents()

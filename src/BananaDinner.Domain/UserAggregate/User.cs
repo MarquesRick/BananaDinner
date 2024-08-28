@@ -3,7 +3,7 @@ using BananaDinner.Domain.UserAggregate.ValueObjects;
 
 namespace BananaDinner.Domain.UserAggregate;
 
-public sealed class User : AggregateRoot<UserId>
+public sealed class User : AggregateRoot<UserId, Guid>
 {
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
