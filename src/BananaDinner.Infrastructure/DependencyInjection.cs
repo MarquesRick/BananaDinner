@@ -4,6 +4,7 @@ using BananaDinner.Application.Common.Interfaces.Persistence;
 using BananaDinner.Application.Common.Interfaces.Services;
 using BananaDinner.Infrastructure.Authentication;
 using BananaDinner.Infrastructure.Persistence;
+using BananaDinner.Infrastructure.Persistence.Interceptors;
 using BananaDinner.Infrastructure.Persistence.Repositories;
 using BananaDinner.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -33,6 +34,7 @@ public static class DependencyInjection
         services.AddDbContext<BananaDinnerDbContext>(options =>
           options.UseNpgsql("Host=localhost;Port=6500;Username=admin;Password=password123;Database=banana_dinner_admin;Trust Server Certificate=true;"));
 
+        services.AddScoped<PublishDomainEventsInterceptor>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IMenuRepository, MenuRepository>();
         return services;

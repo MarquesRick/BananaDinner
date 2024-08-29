@@ -1,19 +1,23 @@
 using BananaDinner.Domain.BillAggregate;
+using BananaDinner.Domain.Common.Models;
 using BananaDinner.Domain.DinnerAggregate;
 using BananaDinner.Domain.GuestAggregate;
 using BananaDinner.Domain.HostAggregate;
 using BananaDinner.Domain.MenuAggregate;
 using BananaDinner.Domain.MenuReviewAggregate;
 using BananaDinner.Domain.UserAggregate;
+using BananaDinner.Infrastructure.Persistence.Interceptors;
 using Microsoft.EntityFrameworkCore;
 
 namespace BananaDinner.Infrastructure.Persistence;
 
 public class BananaDinnerDbContext : DbContext
 {
-    public BananaDinnerDbContext(DbContextOptions<BananaDinnerDbContext> options)
+    private readonly PublishDomainEventsInterceptor _publishDomainEventsInterceptor;
+    public BananaDinnerDbContext(DbContextOptions<BananaDinnerDbContext> options, PublishDomainEventsInterceptor publishDomainEventsInterceptor)
     : base(options)
     {
+        _publishDomainEventsInterceptor = publishDomainEventsInterceptor;
     }
 
     public DbSet<Bill> Bills { get; set; } = null!;
@@ -27,7 +31,14 @@ public class BananaDinnerDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
+            .Ignore<List<IDomainEvent>>()
             .ApplyConfigurationsFromAssembly(typeof(BananaDinnerDbContext).Assembly);
         base.OnModelCreating(modelBuilder);
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.AddInterceptors(_publishDomainEventsInterceptor);
+        base.OnConfiguring(optionsBuilder);
     }
 }

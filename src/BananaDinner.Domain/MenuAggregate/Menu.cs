@@ -3,6 +3,7 @@ using BananaDinner.Domain.Common.ValueObjects;
 using BananaDinner.Domain.DinnerAggregate.ValueObjects;
 using BananaDinner.Domain.HostAggregate.ValueObjects;
 using BananaDinner.Domain.MenuAggregate.Entities;
+using BananaDinner.Domain.MenuAggregate.Events;
 using BananaDinner.Domain.MenuAggregate.ValueObjects;
 using BananaDinner.Domain.MenuReviewAggregate.ValueObjects;
 
@@ -49,7 +50,7 @@ public sealed class Menu : AggregateRoot<MenuId, Guid>
         HostId hostId,
         List<MenuSection> sections)
     {
-        return new(
+        var menu = new Menu(
             MenuId.CreateUnique(),
             name,
             description,
@@ -58,6 +59,10 @@ public sealed class Menu : AggregateRoot<MenuId, Guid>
             sections ?? [],
             DateTime.UtcNow,
             DateTime.UtcNow);
+
+        menu.AddDomainEvent(new MenuCreated(menu));
+
+        return menu;
     }
 
 #pragma warning disable CS8618
